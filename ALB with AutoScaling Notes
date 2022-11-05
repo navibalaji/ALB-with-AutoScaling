@@ -1,0 +1,28 @@
+                                                              Application load Balancer with
+                                                                           Auto Scaling 
+
+1. Create one Vpc
+
+2. Create 4 subnets >> 2 public subnets ( az A and B) and 2 private subnets (AZ A and B)
+
+3. Create Internet Gateway in public subnet and attach it to vpc
+
+4. Create Nat Gateway and attach it with private subnet.
+
+5 Create two route tables >> attach igw (public) >> attach nat gateway (private)
+
+6. Associate subnets in both the route table
+
+------------------------------------------------------------------------------BASIC SETUP IS COMPLETED--------------------------------------------------
+
+7. Create Application Loadbalancer >> internet facing >> Map two public subnets >> create security group (enable port 80) >> create 2 target groups >> attach them >> create Load Balancer
+
+8.Create Cookie Cutter ( Cookie cutter is nothing but it is an Ec2 instance) >> take ami (one for webserver 1 and another for webserver 2)
+
+9. Create Launch Configuration >> choose Ami >> create one Security Group for Auto Scaling (port 80) >> acknowledge and launch.
+
+10.  Create another launch configuration and attach another ami.
+
+11. Create 2 Autoscaling Groups >> switch to launch configuration >> select configuration >> select private subnet1 >> attach to an existing loadbalancer >> choose targets >> enable health check (ELB) >> lauch 
+
+12. same process for another autoscaling group 
